@@ -1,0 +1,30 @@
+TSQLT
+https://github.com/tSQLt-org/tSQLt
+ - tSQLt is a database unit testing framework for Microsoft SQL Server.
+ - tSQLt is compatible with SQL Server 2005 (service pack 2 required) and above on all editions.
+ - The tSQLt framework requires SQL Server CLRs to be enabled (see setup).
+ - The tSQLt framework requires the development database to be set to trustworthy (see setup).
+  -- see also http://stackoverflow.com/questions/10530190/tsqlt-trustworthy-and-clr-requirement
+ 
+SETUP
+1. Download tSQLt from http://tsqlt.org/downloads/.
+
+2. Unzip the file to a location on your hard drive (e.g., C:\tSQLt_Install)
+
+3. Make sure CLRs are enabled on the development server, by running the following script in C:\tSQLt_Install\SetClrEnabled.sql:
+	EXEC sp_configure 'clr enabled', 1;
+	RECONFIGURE;
+	GO
+	
+4. Set the development database to trustworthy for tSQLt to run, by uncommenting and running the following script in C:\tSQLt_Install\SetClrEnabled.sql:
+	DECLARE @cmd NVARCHAR(MAX);
+	SET @cmd='ALTER DATABASE ' + QUOTENAME(DB_NAME()) + ' SET TRUSTWORTHY ON;';
+	EXEC(@cmd);
+
+5. Execute the C:\tSQLt_Install\tSQLt.class.sql script in the development database.
+
+SOURCE CONTROL
+tSQLt tests should be checked into source control, but the tSQLt framework itself should not.
+
+UNINSTALL
+Running the tSQLt.Uninstall procedure removes tSQLt from the database.

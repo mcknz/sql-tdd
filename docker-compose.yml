@@ -1,0 +1,32 @@
+  mssql:
+    image: food-and-stuff:latest
+    #uncomment/edit the following 3 lines to accept the EULA and set your own sysadmin (sa) password:
+    #environment: 
+    #  - SA_PASSWORD=
+    #  - ACCEPT_EULA=
+    ports:
+      - 1433:1433
+    command:
+      - /bin/bash
+      - -c 
+      - |
+        # Launch MSSQL and send to background
+        /opt/mssql/bin/sqlservr &
+        # Wait 30 seconds for SQL Server to be available
+        sleep 30
+        # Create Food_And_Stuff database
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/Databases/Food_And_Stuff_DB_Create.sql
+        # Enable CLRs for tSQLt
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/tSQLt_V1.0.5873.27393/SetClrEnabled.sql -d Food_And_Stuff
+        # Install tSQLt framework
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/tSQLt_V1.0.5873.27393/tSQLt.class.sql -d Food_And_Stuff
+        # Create Customer table
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/Tables/FAS-Table-Customer.sql
+        # Create Order table
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/Tables/FAS-Table-Order.sql
+        # Create Order Detail table
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/Tables/FAS-Table-OrderDetail.sql
+        # Show completion message
+        /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i /Food_And_Stuff/complete.sql
+        # So that the container doesn't shut down, sleep this thread
+        sleep infinity
