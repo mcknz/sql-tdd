@@ -31,5 +31,5 @@ This script contains:
 3. [FAS_Tests_Run.sql](./Food_And_Stuff/Tests/FAS_Tests_Run.sql)<br>
     The tSQLt commands that run both unit tests.
 
-4. [RunCustomerMerge.sql](./Food_And_Stuff/Tests/FAS_Tests_Run.sql)<br>
+4. [RunCustomerMerge.sql](./Food_And_Stuff/Tests/RunCustomerMerge.sql)<br>
     The integration test.
