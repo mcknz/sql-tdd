@@ -16,7 +16,7 @@ Steps to set up the Docker environment (requires Docker for Windows/Mac/Linux):
   ```sh
   docker build -t food-and-stuff:latest . 
   ```
- You can also execute the included `build.sh` script, which contains this command. This will download the latest version of the Docker image for SQL Server for Linux if not already present in the local repository.
+  You can also execute the included `build.sh` script, which contains this command. This will download the latest version of the Docker image for SQL Server for Linux if not already present in the local repository.
 
 2. Edit the included `docker-compose.yml` file to accept the SQL Server for Linux EULA, as well as set your own sysadmin (sa) password:
 
@@ -34,4 +34,4 @@ Steps to set up the Docker environment (requires Docker for Windows/Mac/Linux):
   docker-compose up
   ```
   
- Wait at least 30 seconds for the `**** SETUP COMPLETE ****` message to display.
+  Wait at least 30 seconds for the `**** SETUP COMPLETE ****` message to display.
