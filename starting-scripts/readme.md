@@ -4,34 +4,6 @@ This directory contains the SQL scripts necessary to duplicate the test-driven d
 
 The [completed scripts and tests](../completed-scripts/readme.md) are also available for review.
 
-## Setting up the environment
-Steps to set up the Docker environment (requires Docker for Windows/Mac/Linux):
-
-1. From a bash/shell prompt in the `sql-examples` directory, execute the following command to create the food-and-stuff Docker image that contains SQL Server and the required SQL scripts:
-
-  ```sh
-  docker build -t food-and-stuff:latest . 
-  ```
- You can also execute the included `build.sh` script, which contains this command. This will download the latest version of the Docker image for SQL Server for Linux if not already present in the local repository.
-
-2. Edit the included `docker-compose.yml` file to accept the SQL Server for Linux EULA, as well as set your own sysadmin (sa) password:
-
-  ```sh
-  environment: 
-      - SA_PASSWORD=[your password here]
-      - ACCEPT_EULA=Y
-  ```  
-
-  Ensure that your password conforms to [SQL Server password policy](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy). See [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server) for more information on running/building SQL Server for Linux on Docker.
- 
-3. From a bash/shell prompt in the root directory, execute the following command to run the food-and-stuff Docker container, which starts SQL Server, creates the sample database, and installs the tSQLt framework:
-
-  ```sh
-  docker-compose up
-  ```
-  
- Wait at least 30 seconds for the `**** SETUP COMPLETE ****` message to display.
-
 ## Working with the samples
 Once the environment setup is complete and the container is running, you can use a SQL Server client to connect to the SQL Server instance running on localhost.
 
