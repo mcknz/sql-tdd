@@ -11,7 +11,7 @@ The [completed scripts and tests](./completed-scripts/) are also available for r
 ## Setting up the environment
 Steps to set up the Docker environment (requires Docker for Windows/Mac/Linux):
 
-1. From a bash/shell prompt in the `sql-examples` directory, execute the following command to create the food-and-stuff Docker image that contains SQL Server and the required SQL scripts:
+1. From a bash/shell prompt in this root directory, execute the following command to create the food-and-stuff Docker image that contains SQL Server and the required SQL scripts:
 
   ```sh
   docker build -t food-and-stuff:latest . 
