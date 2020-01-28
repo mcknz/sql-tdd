@@ -24,20 +24,22 @@ In order to write your own tests, you must install some required code as outline
 
 ### Writing your own tests
 Installing the samples creates skeleton tests, which are failing by default. They can be further developed to pass by following the steps below.
+  
+2. In the `starting-scripts/Food_And_Stuff/Tests/FAS_Tests_Install-start.sql` script you opened in step 1, find the first unit test called `FAS_Tests.[test GivenMergeCustomers-ThenCustomerIsCorrect]`. Write a tSQLt test that verifies the correct customer information exists in the Customer table, after the MergeCustomer procedure is executed. 
 
-1. From your SQL client, open this SQL script:
+3. From your SQL client, open this SQL script:
 
   `starting-scripts/Food_And_Stuff/Tests/FAS_Tests_Run-start.sql`
   
   This script contains SQL statements that execute the tSQLt tests.
   
-2. Execute the following SQL statement, which is in the script you opened in step 1:
+4. Execute the following SQL statement, which is in the script you opened in step 3.
 
   `EXEC tSQLt.Run N'FAS_Tests.[test GivenMergeCustomers-ThenCustomerIsCorrect]'`
   
-  This is a tSQLt command that will execute the first test. Because you haven't created the MergeCustomer stored procedure yet, your test should fail. This test verifies that the correct customer information exists in the Customer table, after the MergeCustomer procedure is executed.
+  This is a tSQLt command that will execute the first test. Because you haven't created the MergeCustomer stored procedure yet, your test should fail.
   
-3. From your SQL client, open this SQL script:
+5. From your SQL client, open this SQL script:
 
   `starting-scripts/Food_And_Stuff/Procedures/FAS-Proc-MergeCustomer-start.sql`
   
@@ -45,21 +47,23 @@ Installing the samples creates skeleton tests, which are failing by default. The
 
   Write the least amount of SQL required to make the first test pass, then execute the script to create the procedure in the database.
   
-4. Repeat steps 2 and 3 until the first test passes.
+6. Repeat steps 4 and 5 until the first test passes.
 
-5. Execute this SQL statement, which is in the script you opened in step 1:
+7. In the `starting-scripts/Food_And_Stuff/Tests/FAS_Tests_Install-start.sql` script you opened in step 1, find the second unit test called `FAS_Tests.[test GivenMergeCustomers-ThenOrderIsCorrect]`. Write a tSQLt test that verifies the correct order information exists in the Order table, after the MergeCustomer procedure is executed. 
+
+8. Execute this SQL statement, which is in the script you opened in step 1:
 
   `EXEC tSQLt.Run N'FAS_Tests.[test GivenMergeCustomers-ThenOrderIsCorrect]'`
   
   This is a tSQLt command that executes the second test. Because you haven't written any SQL for the Order table yet, your test should fail. This test verifies that the correct order information exists in the Order table, after the MergeCustomer procedure is executed.
 
-6. Continue to edit the MergeCustomer stored procedure:
+9. Continue to edit the MergeCustomer stored procedure:
 
   `starting-scripts/Food_And_Stuff/Procedures/FAS-Proc-MergeCustomer-start.sql`
   
   Write the least amount of SQL required to make the second test pass, then execute the script to create the procedure in the database.
   
-7. Repeat steps 7 and 8 until the second test passes.
+10. Repeat steps 8 and 9 until the second test passes.
 
 ### Confirming your unit tests using an integration test
 Once both unit tests are passing, open this SQL script:
